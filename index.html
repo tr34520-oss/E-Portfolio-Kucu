@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Portfolio | พัฒนพล แอมชัยภูมิ - Graphic Design</title>
+    <!-- นำเข้าฟอนต์ Prompt จาก Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- นำเข้าไอคอนจาก Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ตั้งค่าตัวแปรสีธีมน้ำเงิน-ขาว */
+        :root {
+            --primary-blue: #1e3a8a;      /* น้ำเงินกรมท่า สุขุม ทันสมัย */
+            --secondary-blue: #2563eb;    /* น้ำเงินสดใส */
+            --light-blue: #eff6ff;        /* ฟ้าอ่อนมากสำหรับพื้นหลังสลับส่วน */
+            --accent-blue: #dbeafe;       /* ฟ้าอ่อนสำหรับเน้นจุดสำคัญ */
+            --text-dark: #0f172a;         /* สีข้อความหลัก */
+            --text-muted: #475569;        /* สีข้อความรอง */
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 12px 20px -3px rgba(30, 58, 138, 0.15);
+        }
+
+        /* รีเซ็ตและตั้งค่าพื้นฐาน */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 85px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        /* เมนูนำทาง (Navbar) */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-blue);
+        }
+
+        .btn-github-nav {
+            background-color: var(--primary-blue);
+            color: var(--white) !important;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-github-nav:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        /* ส่วนที่ 1: หน้าแรก (Hero Section) */
+        #home {
+            padding-top: 140px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--primary-blue);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-blue);
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 10px 26px;
+            border-radius: 8px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--light-blue);
+        }
+
+        .hero-image {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-frame {
+            width: 310px;
+            height: 310px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.25);
+            position: relative;
+            overflow: hidden;
+            border: 6px solid var(--white);
+        }
+
+        /* เมื่อคุณนำรูปจริงมาใส่ ให้ใช้ CSS นี้จัดวางรูปภาพ */
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .profile-placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-placeholder i {
+            font-size: 4.5rem;
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+
+        /* ส่วนที่ 2: แนะนำตัว (About & Statement of Purpose) */
+        #about {
+            background-color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 35px;
+            align-items: start;
+        }
+
+        .about-card {
+            background-color: var(--light-blue);
+            padding: 32px;
+            border-radius: 16px;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .about-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-card p {
+            color: var(--text-dark);
+            margin-bottom: 14px;
+            font-size: 0.98rem;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-bottom: 25px;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--accent-blue);
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .info-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-list strong {
+            color: var(--primary-blue);
+            min-width: 115px;
+        }
+
+        .skills-container h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: var(--white);
+            border: 1px solid var(--accent-blue);
+            color: var(--primary-blue);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+        }
+
+        /* ส่วนที่ 3: ผลงาน (Portfolio / Projects Section) */
+        #portfolio {
+            background-color: var(--light-blue);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-banner {
+            height: 170px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+
+        .project-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-tag {
+            font-size: 0.8rem;
+            color: var(--secondary-blue);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            font-size: 1.22rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.94rem;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .project-link {
+            color: var(--primary-blue);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s;
+        }
+
+        .project-link:hover {
+            gap: 10px;
+            color: var(--secondary-blue);
+        }
+
+        /* ส่วนที่ 4: กิจกรรม (Activities Section) */
+        #activities {
+            background-color: var(--white);
+        }
+
+        .timeline {
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--accent-blue);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 32px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 11px;
+            top: 5px;
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+            background-color: var(--primary-blue);
+            border: 4px solid var(--light-blue);
+        }
+
+        .timeline-content {
+            background-color: var(--light-blue);
+            padding: 22px 26px;
+            border-radius: 12px;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary-blue);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ส่วนท้ายเว็บไซต์ (Footer) */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 50px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+        }
+
+        .footer-info p {
+            color: var(--accent-blue);
+            font-size: 0.95rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            background-color: rgba(255, 255, 255, 0.12);
+            padding: 10px 18px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .contact-item:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+        }
+
+        /* รองรับการแสดงผลบนโทรศัพท์มือถือ (Responsive) */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px 0;
+                gap: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .profile-frame {
+                width: 240px;
+                height: 240px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- เมนูนำทาง -->
+    <header>
+        <div class="container navbar">
+            <a href="#home" class="logo">
+                <i class="fa-solid fa-pen-nib"></i>
+                <span>Pattanaphon.Design</span>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#about">แนะนำตัว</a></li>
+                <li><a href="#portfolio">ผลงาน</a></li>
+                <li><a href="#activities">กิจกรรม</a></li>
+                <li>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-github-nav">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ส่วนที่ 1: หน้าแรก -->
+    <section id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="badge"><i class="fa-solid fa-palette"></i> E-Portfolio | Graphic Design & Communication Arts</span>
+                <h1>สวัสดีครับ ผม <span>พัฒนพล แอมชัยภูมิ</span><br>มุ่งมั่นสู่เส้นทางนักออกแบบกราฟิกมืออาชีพ</h1>
+                <p>นักเรียนชั้นมัธยมศึกษาปีที่ 6 โรงเรียนธัญญรัตน์ ผู้หลงใหลใน "การสื่อสารด้วยภาพ" เชื่อมั่นว่าการออกแบบกราฟิกที่ดีสามารถแก้ปัญหา ถ่ายทอดอารมณ์ และสร้างแรงบันดาลใจเชิงบวกต่อสังคมได้อย่างทรงพลัง</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn-primary">
+                        <i class="fa-solid fa-layer-group"></i> ชมผลงานออกแบบ
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                        <i class="fa-brands fa-github"></i> เปิดดู GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- หากต้องการใส่รูปจริง ให้ลบ div.profile-placeholder ออก แล้วเปิดใช้แท็ก img ด้านล่างแทน (นำไฟล์รูปชื่อ profile.jpg ไว้โฟลเดอร์เดียวกับ index.html) -->
+                <div class="profile-frame">
+                    <!-- <img src="profile.jpg" alt="นายพัฒนพล แอมชัยภูมิ"> -->
+                    <div class="profile-placeholder">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <p><strong>พัฒนพล แอมชัยภูมิ</strong><br><small>วางไฟล์รูป profile.jpg เพื่อแสดงภาพจริง</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ส่วนที่ 2: แนะนำตัว (Statement of Purpose) -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">แนะนำตัว & Statement of Purpose</h2>
+            <p class="section-subtitle">ตัวตน แรงบันดาลใจ และเป้าหมายในการศึกษาต่อด้านการออกแบบกราฟิก</p>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3><i class="fa-solid fa-quote-left"></i> แรงบันดาลใจและตัวตนของผม</h3>
+                    <p>กระผม <strong>นาย พัฒนพล แอมชัยภูมิ</strong> กำลังศึกษาอยู่ในระดับชั้นมัธยมศึกษาปีที่ 6 โรงเรียนธัญญรัตน์ เป็นคนที่ให้ความสำคัญกับความรับผิดชอบ ความขยัน ความมีวินัย และความตั้งใจที่จะทำหน้าที่ของตนให้ดีที่สุดในทุกบทบาทที่ได้รับ</p>
+                    <p>จุดเด่นที่กระผมภาคภูมิใจคือ <strong>การเป็นคนช่างสังเกต มีความคิดสร้างสรรค์ และเข้าใจมุมมองของผู้อื่น</strong> มักใส่ใจในรายละเอียดเล็ก ๆ น้อย ๆ รอบตัว พร้อมเปิดรับฟังความคิดเห็นจากคนรอบข้างเพื่อนำมาปรับปรุงผลงานให้สื่อสารได้ตรงจุด</p>
+                    <p>จุดเริ่มต้นความสนใจเกิดจากการสังเกตสื่อสิ่งพิมพ์ โปสเตอร์ อาร์ตเวิร์กบนสื่อดิจิทัล บรรจุภัณฑ์ และแบรนด์ดิ้งต่าง ๆ จึงเริ่มศึกษาโปรแกรมการออกแบบด้วยตนเอง ฝึกฝนสร้างสรรค์ผลงานอย่างต่อเนื่อง เพื่อเตรียมพร้อมเข้าศึกษาต่อใน <strong>คณะออกแบบกราฟิกดีไซน์ สาขาวิชาการออกแบบนิเทศศิลป์</strong></p>
+                </div>
+
+                <div class="skills-container">
+                    <ul class="info-list">
+                        <li><strong>ชื่อ-นามสกุล:</strong> <span>นาย พัฒนพล แอมชัยภูมิ</span></li>
+                        <li><strong>ระดับชั้น:</strong> <span>มัธยมศึกษาปีที่ 6</span></li>
+                        <li><strong>สถานศึกษา:</strong> <span>โรงเรียนธัญญรัตน์</span></li>
+                        <li><strong>เป้าหมายคณะ:</strong> <span>ออกแบบกราฟิกดีไซน์ (นิเทศศิลป์)</span></li>
+                    </ul>
+
+                    <h3><i class="fa-solid fa-wand-magic-sparkles"></i> ทักษะและความสนใจด้านการออกแบบ</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag"><i class="fa-solid fa-bezier-curve"></i> Graphic Design</span>
+                        <span class="skill-tag"><i class="fa-solid fa-file-image"></i> Poster & Print Media</span>
+                        <span class="skill-tag"><i class="fa-solid fa-mobile-screen"></i> Digital Artwork</span>
+                        <span class="skill-tag"><i class="fa-solid fa-box-open"></i> Packaging Design</span>
+                        <span class="skill-tag"><i class="fa-solid fa-copyright"></i> Branding & Identity</span>
+                        <span class="skill-tag"><i class="fa-solid fa-eye"></i> Visual Communication</span>
+                        <span class="skill-tag"><i class="fa-solid fa-code"></i> HTML & CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ส่วนที่ 3: ผลงาน (ตัวอย่างโครงสร้างสำหรับใส่ผลงานกราฟิกของคุณ) -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">ผลงานการออกแบบ (Portfolio)</h2>
+            <p class="section-subtitle">ผลงานสร้างสรรค์ด้านสื่อสิ่งพิมพ์ อาร์ตเวิร์ก บรรจุภัณฑ์ และอัตลักษณ์แบรนด์ (ข้อมูลตัวอย่างสำหรับใส่ผลงานจริง)</p>
+
+            <div class="portfolio-grid">
+                <!-- การ์ดผลงานที่ 1 -->
+                <div class="project-card">
+                    <div class="project-banner">
+                        <i class="fa-solid fa-rectangle-ad"></i>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Poster & Print Media</span>
+                        <h3 class="project-title">ผลงานออกแบบโปสเตอร์และสื่อสิ่งพิมพ์</h3>
+                        <p class="project-desc">การออกแบบสื่อประชาสัมพันธ์และโปสเตอร์เชิงสร้างสรรค์ โดยเน้นการจัดวางองค์ประกอบศิลป์ (Composition) การเลือกใช้คู่สี และตัวอักษรเพื่อสื่อสารอารมณ์และสาระสำคัญให้เข้าถึงผู้รับสารได้อย่างชัดเจน</p>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                            ดูรายละเอียดผลงาน <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- การ์ดผลงานที่ 2 -->
+                <div class="project-card">
+                    <div class="project-banner">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Packaging & Branding</span>
+                        <h3 class="project-title">การออกแบบบรรจุภัณฑ์และอัตลักษณ์แบรนด์</h3>
+                        <p class="project-desc">โปรเจกต์ออกแบบโลโก้ ระบบอัตลักษณ์แบรนด์ (Brand Identity) และโครงสร้างบรรจุภัณฑ์ที่คำนึงถึงความสวยงามควบคู่กับการใช้งานจริง เพื่อสร้างการจดจำและเพิ่มมูลค่าให้กับผลิตภัณฑ์</p>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                            ดูรายละเอียดผลงาน <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- การ์ดผลงานที่ 3 -->
+                <div class="project-card">
+                    <div class="project-banner">
+                        <i class="fa-solid fa-laptop-file"></i>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Digital Artwork & Web</span>
+                        <h3 class="project-title">อาร์ตเวิร์กบนสื่อดิจิทัลและเว็บเพจ</h3>
+                        <p class="project-desc">ผลงานกราฟิกสำหรับสื่อออนไลน์ อินโฟกราฟิก และการประยุกต์ใช้ความรู้ด้านการออกแบบร่วมกับการพัฒนาหน้าเว็บไซต์ (HTML/CSS) เพื่อนำเสนอเรื่องราวผ่านสื่อดิจิทัลอย่างทันสมัย</p>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                            ดูโปรเจกต์บน GitHub <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ส่วนที่ 4: กิจกรรม -->
+    <section id="activities">
+        <div class="container">
+            <h2 class="section-title">กิจกรรมและการพัฒนาตนเอง</h2>
+            <p class="section-subtitle">ประสบการณ์การเรียนรู้ การฝึกฝนทักษะ และการมีส่วนร่วมในกิจกรรมต่าง ๆ</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">การพัฒนาทักษะอย่างต่อเนื่อง</span>
+                        <h3 class="timeline-title">ศึกษาและฝึกฝนโปรแกรมด้านการออกแบบกราฟิกด้วยตนเอง</h3>
+                        <p class="timeline-desc">ฝึกฝนการใช้เครื่องมือออกแบบกราฟิก การจัดวางเลย์เอาต์ และการสร้างสรรค์อาร์ตเวิร์กหลากหลายรูปแบบ พร้อมเปิดรับคำแนะนำจากเพื่อนและผู้เชี่ยวชาญมาพัฒนาผลงานอย่างสม่ำเสมอ</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">กิจกรรมภายในโรงเรียนธัญญรัตน์</span>
+                        <h3 class="timeline-title">การมีส่วนร่วมในงานออกแบบสื่อและกิจกรรมของโรงเรียน</h3>
+                        <p class="timeline-desc">ปฏิบัติหน้าที่ด้วยความรับผิดชอบและมีวินัย สนับสนุนงานด้านการออกแบบสื่อประชาสัมพันธ์ โปสเตอร์ และป้ายนิเทศสำหรับกิจกรรมต่าง ๆ ของโรงเรียน (สามารถระบุชื่อกิจกรรมจริงเพิ่มเติมได้)</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">การเตรียมความพร้อมสู่มหาวิทยาลัย</span>
+                        <h3 class="timeline-title">จัดทำแฟ้มสะสมผลงานด้านการออกแบบนิเทศศิลป์</h3>
+                        <p class="timeline-desc">รวบรวมและคัดสรรผลงานการออกแบบกราฟิก พร้อมพัฒนาเว็บไซต์ E-Portfolio เพื่อนำเสนอศักยภาพและมุมมองด้านการสื่อสารด้วยภาพสำหรับการสมัครเข้าศึกษาต่อ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ส่วนท้ายเว็บไซต์ -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>นาย พัฒนพล แอมชัยภูมิ</h3>
+                    <p>นักเรียนชั้นมัธยมศึกษาปีที่ 6 โรงเรียนธัญญรัตน์ | สายการออกแบบกราฟิกและนิเทศศิลป์</p>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:pattanaphon.example@email.com" class="contact-item">
+                        <i class="fa-solid fa-envelope"></i> pattanaphon.example@email.com
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <i class="fa-brands fa-github"></i> GitHub Portfolio
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 E-Portfolio นาย พัฒนพล แอมชัยภูมิ | พัฒนาด้วย HTML, CSS และ JavaScript</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript สำหรับควบคุมเมนูบนมือถือ -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
